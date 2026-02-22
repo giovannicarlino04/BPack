@@ -72,8 +72,10 @@ int main(int argc, char** argv) {
     }
 
     char *mode = argv[1];
-    arena *global_arena = arena_create(GiB(1));
-
+    
+    // Note (Giovanni): If working with files larger than 8GB, you should increase this!
+    arena *global_arena = arena_create(GiB(8)); 
+    
     if (strcmp(mode, "-pack") == 0) {
         char *input_dir = argv[2];
         char *output_filename = argv[3];
